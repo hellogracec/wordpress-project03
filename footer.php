@@ -31,6 +31,7 @@
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
+<div id="dimmer"></div>
 
 </body>
 </html>
