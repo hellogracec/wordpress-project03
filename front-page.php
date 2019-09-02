@@ -11,27 +11,14 @@ get_header();
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main">
-
-		<?php
-		while (have_posts()) :
-			the_post();
-			get_template_part( 'template-parts/content', get_post_type() );
-
-			echo "<h1>Any Post???</h1>";
-		endwhile; // End of the loop.
-		?>
-
-		<section class="intro">
-		</section>
-		
 		<section class="front-slider">
 		<?php 
 		// ** Gallery Image Slider
 		$images = get_field('image_slider');
-		$size = 'full'; // (thumbnail, medium, large, full or custom size)
+		$size = 'full'; // (thumbnail, medium, large, full or custom size)`
 
 		if( $images ): ?>
-		<div class="slider slick-slider">
+		<div class="slider slick-slider alignfull">
 			<?php foreach( $images as $image ): ?>
 			<?php echo wp_get_attachment_image( $image['ID'], $size ); ?>
 			<?php endforeach; ?>
@@ -39,10 +26,25 @@ get_header();
 		<?php endif; ?>
 		</section>
 
-		<?php
-		// TODO - On the home page, show the title and featured image of the 3 most recent blog posts. Make each item clickable to open a modal window that shows the title and content which is pulled in using the WordPress REST API. Use the following example or create it yourself.
+		<section class="intro">
+		</section>
+	
+		<section class="recent-posts">
+			<!-- Define our WP Query Parameters -->
+			<?php $the_query = new WP_Query( 'posts_per_page=5' ); ?>
+			
+			<!-- Start our WP Query -->
+			<?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
+			
+			<!-- Display the Post Title with Hyperlink -->
+			<a href="<?php the_permalink() ?>" class="open-modal" data-id="<?php echo get_the_ID(); ?>"><h2><?php the_title(); ?></h2><?php the_post_thumbnail('medium'); ?></a>
+			
 
-		?>
+			<!-- Repeat the process and reset once it hits the limit -->
+			<?php 
+			endwhile;
+			wp_reset_postdata();
+			?>
 		<div id="modal-window" class="modal-window">
 			<button id="close-modal" class="close-modal">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -52,6 +54,7 @@ get_header();
 			</button>
 			<div id="modal-window-content"></div>
 		</div>
+		</section>
 
 	</main><!-- #main -->
 </div><!-- #primary -->

@@ -43,6 +43,7 @@ if ( ! function_exists( 'wordpress_project_03_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 		add_image_size('portrait-blog', 200, 9999);
+		add_image_size( 'student-featured', 200, 300, true );
 
 
 		// This theme uses wp_nav_menu() in one location.

@@ -46,7 +46,7 @@ if( $terms && ! is_wp_error( $terms )) {
                 echo '</a>';
                 echo "</h2>";
                 // the_content();
-                the_post_thumbnail('medium');
+                the_post_thumbnail('student-featured');
                 echo "<p>";
                 the_excerpt();
                 echo "</p>";

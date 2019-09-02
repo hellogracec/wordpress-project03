@@ -17,7 +17,11 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
-		<?php the_content(); ?>
+		<?php 
+		the_post_thumbnail('student-featured');
+		// ** To retrieve only text from the_content  
+		echo '<p>' . wp_strip_all_tags( get_the_content() ) . '</p>';
+		?>
 
 		<?php
 		wp_link_pages(array(
