@@ -129,11 +129,55 @@ function wordpress_project_03_scripts() {
 
 	wp_enqueue_script( 'wordpress_project_03-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
+	// ***************************************
+	//**  Enqueue Slick Slider only on Home page
+	// ***************************************
+	if ( is_front_page() ) {
+
+		// ** Load slick.min js
+		wp_enqueue_script(
+			'pjt-slickslider',
+			get_template_directory_uri() . '/js/slick.min.js',
+			array('jquery'),
+			'20190901',
+			true
+		);
+
+		// ** Load slick setting
+		wp_enqueue_script(
+			'pjt-slickslider-settings',
+			get_template_directory_uri() . '/js/slick-settings.js',
+			array('jquery', 'pjt-slickslider'),
+			'20190901',
+			true
+		);
+
+		// ** Load css
+		wp_enqueue_style(
+			'pjt-slicktheme',
+			get_template_directory_uri() . '/css/slick-theme.css'	
+		);
+		wp_enqueue_style(
+			'pjt-slick',
+			get_template_directory_uri() . '/css/slick.css'
+		);
+	}
+
+	// ***************************************
+	// ** REST API EXAMPLE
+	// ***************************************
+	if ( is_front_page() ) {
+		wp_enqueue_script( 'twdwp-rest-api', get_template_directory_uri() . '/js/twdwp-rest-api.js', array( 'jquery' ), '20190422', false );
+		wp_localize_script( 'twdwp-rest-api', 'rest_object', array( 'api_url' => site_url( '/wp-json/wp/v2/' ) ) );
+	}	
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'wordpress_project_03_scripts' );
+
+
 
 /**
  * Implement the Custom Header feature.
