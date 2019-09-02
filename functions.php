@@ -123,6 +123,9 @@ add_action( 'widgets_init', 'wordpress_project_03_widgets_init' );
  * Enqueue scripts and styles.
  */
 function wordpress_project_03_scripts() {
+	// ** Add google font
+	wp_enqueue_style('pjt-googlefont-Nunito', 'https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700');
+
 	wp_enqueue_style( 'wordpress_project_03-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'wordpress_project_03-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
@@ -162,6 +165,22 @@ function wordpress_project_03_scripts() {
 			get_template_directory_uri() . '/css/slick.css'
 		);
 	}
+
+
+	// ****************************************
+	// ** Scroll To Top ** with Loading CSS
+	// ****************************************
+	wp_enqueue_style(
+		'scroll-to-top',
+		get_template_directory_uri() . '/css/scroll-to-top.css'	
+	);
+	wp_enqueue_script( 
+		'scroll-to-top', 
+		get_template_directory_uri() . '/js/scroll-to-top.js', 
+		array( 'jquery' ), 
+		'20190827',
+		true 
+	);
 
 	// ***************************************
 	// ** REST API EXAMPLE

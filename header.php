@@ -40,7 +40,6 @@
 			$wordpress_project_03_description = get_bloginfo( 'description', 'display' );
 			if ( $wordpress_project_03_description || is_customize_preview() ) :
 				?>
-				<p class="site-description"><?php echo $wordpress_project_03_description; /* WPCS: xss ok. */ ?></p>
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 
