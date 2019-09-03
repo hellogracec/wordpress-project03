@@ -125,7 +125,7 @@ add_action( 'widgets_init', 'wordpress_project_03_widgets_init' );
  */
 function wordpress_project_03_scripts() {
 	// ** Add google font
-	wp_enqueue_style('pjt-googlefont-Nunito', 'https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700');
+	wp_enqueue_style('pjt-googlefont-Montserrat', 'https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,900');
 
 	wp_enqueue_style( 'wordpress_project_03-style', get_stylesheet_uri() );
 

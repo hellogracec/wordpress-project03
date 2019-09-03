@@ -397,7 +397,7 @@ input,
 select,
 optgroup,
 textarea {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #404040;
   font-size: 16px;
   font-size: 1rem;
@@ -625,42 +625,80 @@ textarea {
 }
 
 /*--------------------------------------------------------------
-# Navigation
+## Menus & Header
 --------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## Links
---------------------------------------------------------------*/
-a {
-  color: royalblue;
+header {
+  background: green;
 }
 
-a:visited {
-  color: purple;
+.site-title {
+  font-weight: bold;
+  font-size: 1.4em;
 }
 
-a:hover,
-a:focus,
-a:active {
-  color: midnightblue;
+.site-branding .site-title a {
+  text-decoration: none;
+  color: black;
 }
 
-a:focus {
-  outline: thin dotted;
+.site-branding .site-title p {
+  margin: 0;
+  white-space: nowrap;
 }
 
-a:hover,
-a:active {
-  outline: 0;
+#masthead .site-branding {
+  margin: 0 auto;
+  height: inherit;
+  min-height: 50px;
+  position: relative;
 }
 
-/*--------------------------------------------------------------
-## Menus
---------------------------------------------------------------*/
+.site-branding .site-title {
+  position: absolute;
+  z-index: 9999;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.site-branding {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1000px;
+  text-transform: uppercase;
+}
+
+.menu-toggle {
+  display: block;
+  margin: 0;
+  font-size: 0.9em;
+  color: #fff;
+  float: right;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+  text-decoration: none;
+  cursor: pointer;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+}
+
+.main-navigation.toggled .nav-menu {
+  display: block;
+  clear: both;
+}
+
 .main-navigation {
   clear: both;
   display: block;
-  float: left;
   width: 100%;
+  height: 52px;
+  line-height: 52px;
+  z-index: 999;
 }
 
 .main-navigation ul {
@@ -670,43 +708,53 @@ a:active {
   padding-left: 0;
 }
 
-.main-navigation ul ul {
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-  float: left;
-  position: absolute;
-  top: 100%;
-  left: -999em;
-  z-index: 99999;
+.main-navigation li {
+  position: relative;
+  float: none;
 }
 
+.main-navigation li a {
+  display: block;
+  padding: 0em 1em;
+  font-size: 0.9em;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 700;
+  color: white;
+}
+
+.main-navigation ul ul,
 .main-navigation ul ul ul {
-  left: -999em;
-  top: 0;
-}
-
-.main-navigation ul ul li:hover > ul,
-.main-navigation ul ul li.focus > ul {
-  left: 100%;
+  position: relative;
+  display: block;
 }
 
 .main-navigation ul ul a {
-  width: 200px;
+  width: 100%;
 }
 
-.main-navigation ul li:hover > ul,
-.main-navigation ul li.focus > ul {
-  left: auto;
+.main-navigation ul {
+  background: tan;
 }
-
-.main-navigation li {
-  float: left;
-  position: relative;
+.main-navigation ul a:hover,
+.main-navigation ul ul a:hover,
+.main-navigation .current_page_ancestor,
+.main-navigation ul ul .current_page_parent,
+.main-navigation .current_page_parent .current_page_item > a,
+.main-navigation ul ul :hover > a,
+.main-navigation .current_page_item > a,
+.main-navigation .current_page_item > a:hover,
+.main-navigation .current_page_item li:hover,
+.main-navigation .current_page_parent .current_page_item > a {
+  background-color: #111;
 }
-
-.main-navigation a {
-  display: block;
-  text-decoration: none;
-}
+/* 
+.main-navigation ul ul li {
+  padding: 0;
+  height: 32px;
+  line-height: 32px;
+  width: 100%;
+} */
 
 /* Small menu. */
 .menu-toggle,
@@ -714,12 +762,45 @@ a:active {
   display: block;
 }
 
-@media screen and (min-width: 37.5em) {
+/** Media Query **/
+@media screen and (min-width: 700px) {
   .menu-toggle {
     display: none;
   }
+  .site-branding .site-title {
+    position: unset;
+  }
+
+  .main-navigation {
+    width: inherit;
+  }
+
   .main-navigation ul {
-    display: block;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .main-navigation li {
+    padding: 0;
+  }
+
+  .main-navigation ul ul {
+    position: absolute;
+    left: 0;
+    z-index: 99999;
+    display: none;
+    float: left;
+    padding: 0;
+  }
+
+  .main-navigation ul ul a {
+    width: 120px;
+    height: 45px;
+    line-height: 45px;
+    text-transform: none;
+    text-align: left;
+    padding-left: 1em;
+    background-color: #595959;
   }
 }
 
@@ -825,10 +906,6 @@ body.error404 .content-area {
   margin: 0 auto;
   padding: 0 20px;
   height: inherit;
-}
-
-.site-content {
-  margin-top: 1em;
 }
 
 /*--------------------------------------------------------------
@@ -1112,24 +1189,13 @@ MODAL WINDOW
 /***************************************/
 /** Custom Styles  **/
 /***************************************/
-#masthead .site-branding {
-  margin: 0 10px;
-}
-
-@media (min-width: 500px) {
-  #masthead .site-branding {
-    margin: 0 20px;
-  }
-}
-@media (min-width: 1440px) {
-  #masthead .site-branding {
-    margin: 0 auto;
-    max-width: 1440px;
-  }
-}
-
 .alignfull {
   width: 100vw;
   max-width: 100vw;
-  margin: 2rem calc(50% - 50vw);
+  margin: 0 calc(50% - 50vw);
+}
+
+.site-info a {
+  text-decoration: none;
+  color: inherit;
 }
