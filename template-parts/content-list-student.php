@@ -14,7 +14,7 @@ $terms = get_terms(
 
 if( $terms && ! is_wp_error( $terms )) {
 	echo '<section class="widget">';
-	foreach($terms as $term) {
+
 
 		// ** Archive-ms-work-category 
 		// ** by term slug (designer, developer)
@@ -22,15 +22,7 @@ if( $terms && ! is_wp_error( $terms )) {
 			'post_type' 	  => 'pjt-student',
             'posts_per_page'  => -1,
             'orderby'         => 'title',
-            'order'           => 'ASC',
-			// instead -1 (show all), show only 3 posts
-			'tax_query' 	  => array(
-				array(
-					'taxonomy' => 'pjt-student-category', 
-					'field'	   => 'slug',
-					'terms'    => $term->slug
-				)
-			)
+            'order'           => 'ASC'
 		 );
 		 
 		 $student = new WP_Query( $args );
@@ -46,20 +38,21 @@ if( $terms && ! is_wp_error( $terms )) {
                 echo '</a>';
                 echo "</h2>";
                 // the_content();
-                the_post_thumbnail('student-featured');
+                the_post_thumbnail('medium');
                 echo "<p>";
                 the_excerpt();
-                echo "</p>";
-                echo 'Specialty: ';
-                echo '<a href="' . get_term_link($term) . '">';
-                echo $term->name;
-                echo "</a>";
+				echo "</p>";
+				echo get_the_term_list( 
+					$post->ID, 
+					'pjt-student-category', 
+					'Specialty: '
+				); 
                 echo '</div>';
 			 }
 			 echo "</div>";
 			 wp_reset_postdata();
 		 }
-	}
+	
 	echo '</section>';
 }
 ?>

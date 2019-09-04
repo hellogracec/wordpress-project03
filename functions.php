@@ -247,3 +247,9 @@ function pjt_excerpt_more ( $more ) {
 	return $read_more;
 }
 add_filter('excerpt_more', 'pjt_excerpt_more');
+
+
+// ***************************************
+// ** Register ACF Block Types
+// ***************************************
+require get_template_directory() . '/blocks/register-blocks.php';

@@ -802,6 +802,16 @@ header {
     padding-left: 1em;
     background-color: #595959;
   }
+  .main-navigation ul li:hover > ul {
+    display: block;
+  }
+
+  .main-navigation .current_page_item > a,
+  .main-navigation .current-menu-item > a,
+  .main-navigation .current_page_item > a:hover,
+  .main-navigation .current-menu-item > a:hover {
+    background: #9e9828;
+  }
 }
 
 .site-main .comment-navigation,

@@ -49,10 +49,10 @@ function pjt_register_custom_post_types()
 		'menu_icon'          => 'dashicons-universal-access-alt',
 		'supports'           => array('title', 'thumbnail', 'editor'),
 		'template'           => array(
-            array('core/image'),
             array('core/paragraph',array('placeholder' => 'Write Short Biography...')),
-        ),
-        'template_lock' => 'all'    
+			array('acf/date-picker'),
+		),
+        'template_lock' => 'all',    
     );
     register_post_type('pjt-student', $args);
     
