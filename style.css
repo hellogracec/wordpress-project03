@@ -674,7 +674,7 @@ textarea {
 .menu-toggle {
   display: block;
   margin: 0;
-  padding: 11px 1em;
+  padding: 15px 1em;
   font-size: 0.9em;
   color: #fff;
   float: right;
@@ -1187,13 +1187,13 @@ MODAL WINDOW
   top: 50%;
   left: 0;
   right: 0;
-  z-index: 1100;
+  z-index: 9999;
   transform: translateY(-50%);
   width: 96%;
   max-width: 900px;
   max-height: 90vh;
   margin: 0 auto;
-  padding: 2.5rem;
+  padding: 2rem;
   background-color: #fff;
   overflow-y: auto;
 }
@@ -1211,8 +1211,8 @@ MODAL WINDOW
 }
 .close-modal {
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  top: 1rem;
+  right: 1rem;
   padding: 0;
   background: none;
   border: none;
@@ -1232,13 +1232,13 @@ MODAL WINDOW
   height: 2rem;
 }
 .close-modal path {
-  fill: #aaa;
+  fill: #3aaf55;
   -webkit-transition: fill ease 0.3s;
   transition: fill ease 0.3s;
 }
 .close-modal:hover path,
 .close-modal:focus path {
-  fill: #000;
+  fill: #2e8642;
 }
 
 /***************************************/
@@ -1274,22 +1274,50 @@ MODAL WINDOW
   margin: 0;
 }
 
-.site-footer-info {
-  color: inherit;
+.site-footer .site-info p,
+.site-footer .site-map li {
+  margin: 0 0 5px;
 }
-
-.site-footer .menu-main-menu-container > ul {
-  background: none;
+.site-footer .sub-menu {
+  margin-top: 5px;
 }
 
 .site-map-title {
   font-size: 1.3em;
-  margin: 20px 0 10px;
+  margin: 20px 0 5px;
+}
+.site-footer .menu-main-menu-container > ul {
+  background: none;
+}
+
+.site-basic-info {
+  color: inherit;
+  margin: 20px 0 0;
 }
 
 /** Footer Media Query **/
-@media screen and (min-width: 700px) {
-  footer {
+@media screen and (min-width: 460px) {
+  .site-footer {
     padding: 20px 20px;
+    margin: 0 auto;
+    max-width: 1000px;
+    position: relative;
+  }
+
+  /** Full Bleed Width Background CSS trick **/
+  .site-footer::before,
+  .site-footer::after {
+    content: "";
+    position: absolute;
+    /* fill vertically */
+    top: 0;
+    bottom: 0;
+    width: 9600px;
+    right: 100%;
+    background: #3aaf55;
+  }
+  .site-footer::after {
+    width: 320px;
+    left: 100%;
   }
 }

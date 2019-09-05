@@ -15,22 +15,24 @@
 
 	<footer id="colophon" class="site-footer">
 		<div class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
-		<div class="site-info">
-			<p>Location: 555 Seymour St. Vancouver, BC</p>
-			<p>Phone: 000.000.0909</p>
-			<p>email: info@hellogracecho.com</p>
-			<p>Hours: Monday - Friday, 9:00AM - 5:00PM</p>
+		<div class="footer-content-container">
+			<div class="site-info">
+				<p><a href="https://goo.gl/maps/zzfsfXZfe3zeba5H9" target="_blank">Location: 555 Seymour St. Vancouver, BC</a></p>
+				<p>Phone: 000.000.0909</p>
+				<p><a href="mailto:info@hellogracecho.com" target="_blank">email: info@hellogracecho.com</a></p>
+				<p>Hours: Monday - Friday, 9:00AM - 5:00PM</p>
+			</div>
+			<div class="site-map">
+				<div class="site-map-title">Site Map</div>
+				<?php
+				wp_nav_menu( array(
+					'theme_location' => 'menu-1',
+					'menu_id'        => 'primary-menu',
+				) );
+				?>
+			</div>
 		</div>
-		<div class="site-map">
-			<div class="site-map-title">Site Map</div>
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
-			?>
-		</div>
-		<div class="site-footer-info">
+		<div class="site-basic-info">
 			<?php
 			/* translators: 1: Theme name, 2: Theme author. */
 			// printf( esc_html__( '%1$s | %2$s.', 'wordpress_project_03' ), 'BCIT Education Purpose Only', '<a href="https://hellogracecho.com">&copy; 2019 Grace Cho</a>' );
