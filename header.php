@@ -43,7 +43,7 @@
 			<?php endif; ?>
 			
 			<nav id="site-navigation" class="main-navigation">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="screen-reader-text"><?php esc_html_e( 'Menu', 'Graceful School' );?></span><?php  get_template_part('images/icon', 'menu');?></button>
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="screen-reader-text"><?php esc_html_e( 'Menu', 'DOG WHO CODES' );?></span><?php  get_template_part('images/icon', 'menu');?></button>
 				<?php
 				wp_nav_menu( array(
 					'theme_location' => 'menu-1',

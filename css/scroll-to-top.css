@@ -1,8 +1,19 @@
 .scrollToTop {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   position: fixed;
-  right: 40px;
-  bottom: 40px;
+  right: 30px;
+  bottom: 30px;
   display: none;
+  text-decoration: none;
+  color: #e8e86d;
+  fill: #e8e86d;
+}
+
+.scrollToTop > span {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  font-size: 0.9em;
+  font-weight: bold;
 }

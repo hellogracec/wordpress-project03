@@ -80,6 +80,18 @@ h1 {
   margin: 0.67em 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 /* Grouping content
 	 ========================================================================== */
 
@@ -497,21 +509,12 @@ hr {
 
 ul,
 ol {
-  margin: 0 0 1.5em 3em;
-}
-
-ul {
-  list-style: disc;
-}
-
-ol {
-  list-style: decimal;
+  margin: 0;
 }
 
 li > ul,
 li > ol {
-  margin-bottom: 0;
-  margin-left: 1.5em;
+  margin: 0;
 }
 
 dt {
@@ -627,18 +630,16 @@ textarea {
 /*--------------------------------------------------------------
 ## Menus & Header
 --------------------------------------------------------------*/
-header {
-  background: green;
-}
-
 .site-title {
   font-weight: bold;
-  font-size: 1.4em;
+  font-size: 1.3em;
+  padding: 0 7px;
+  border: 5px #3aaf55 solid;
 }
 
 .site-branding .site-title a {
-  text-decoration: none;
-  color: black;
+  color: #3aaf55;
+  letter-spacing: 1px;
 }
 
 .site-branding .site-title p {
@@ -649,7 +650,7 @@ header {
 #masthead .site-branding {
   margin: 0 auto;
   height: inherit;
-  min-height: 50px;
+  min-height: 60px;
   position: relative;
 }
 
@@ -665,7 +666,7 @@ header {
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 10px;
   max-width: 1000px;
   text-transform: uppercase;
 }
@@ -673,18 +674,22 @@ header {
 .menu-toggle {
   display: block;
   margin: 0;
+  padding: 11px 1em;
   font-size: 0.9em;
   color: #fff;
   float: right;
   border: none;
   box-shadow: none;
   text-shadow: none;
-  text-decoration: none;
   cursor: pointer;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;
+}
+
+.menu-toggle > svg {
+  fill: #3aaf55;
 }
 
 .main-navigation.toggled .nav-menu {
@@ -696,16 +701,17 @@ header {
   clear: both;
   display: block;
   width: 100%;
-  height: 52px;
-  line-height: 52px;
+  height: 60px;
+  line-height: 60px;
   z-index: 999;
 }
 
 .main-navigation ul {
   display: none;
-  list-style: none;
-  margin: 0;
   padding-left: 0;
+}
+.menu-main-menu-container > ul {
+  background: #4b4b4bce;
 }
 
 .main-navigation li {
@@ -717,10 +723,9 @@ header {
   display: block;
   padding: 0em 1em;
   font-size: 0.9em;
-  text-decoration: none;
   text-align: center;
   font-weight: 700;
-  color: white;
+  color: #fff;
 }
 
 .main-navigation ul ul,
@@ -733,9 +738,6 @@ header {
   width: 100%;
 }
 
-.main-navigation ul {
-  background: tan;
-}
 .main-navigation ul a:hover,
 .main-navigation ul ul a:hover,
 .main-navigation .current_page_ancestor,
@@ -746,7 +748,8 @@ header {
 .main-navigation .current_page_item > a:hover,
 .main-navigation .current_page_item li:hover,
 .main-navigation .current_page_parent .current_page_item > a {
-  background-color: #111;
+  background-color: #3aaf55ba;
+  color: #e8e86d;
 }
 /* 
 .main-navigation ul ul li {
@@ -762,17 +765,48 @@ header {
   display: block;
 }
 
+/***************************************/
 /** Media Query **/
+/***************************************/
 @media screen and (min-width: 700px) {
+  .site-title {
+    font-size: 1.6em;
+  }
   .menu-toggle {
     display: none;
   }
+
+  .site-branding {
+    padding: 0 20px;
+  }
+
   .site-branding .site-title {
     position: unset;
   }
 
   .main-navigation {
     width: inherit;
+  }
+
+  .menu-main-menu-container > ul {
+    background: none;
+  }
+
+  .menu-main-menu-container > ul > li > a {
+    padding: 0 20px;
+  }
+
+  .sub-menu {
+    width: 100%;
+  }
+
+  .main-navigation {
+    line-height: 32px;
+    height: 32px;
+  }
+
+  .main-navigation li a {
+    color: #3aaf55;
   }
 
   .main-navigation ul {
@@ -790,17 +824,15 @@ header {
     z-index: 99999;
     display: none;
     float: left;
-    padding: 0;
+    padding: 14px 0 0 0;
   }
 
   .main-navigation ul ul a {
-    width: 120px;
-    height: 45px;
-    line-height: 45px;
+    height: 36px;
+    line-height: 36px;
     text-transform: none;
-    text-align: left;
-    padding-left: 1em;
-    background-color: #595959;
+    text-align: center;
+    background-color: #fff;
   }
   .main-navigation ul li:hover > ul {
     display: block;
@@ -809,8 +841,19 @@ header {
   .main-navigation .current_page_item > a,
   .main-navigation .current-menu-item > a,
   .main-navigation .current_page_item > a:hover,
-  .main-navigation .current-menu-item > a:hover {
-    background: #9e9828;
+  .main-navigation .current-menu-item > a:hover,
+  .main-navigation ul a:hover,
+  .main-navigation ul ul a:hover,
+  .main-navigation .current_page_ancestor,
+  .main-navigation ul ul .current_page_parent,
+  .main-navigation .current_page_parent .current_page_item > a,
+  .main-navigation ul ul :hover > a,
+  .main-navigation .current_page_item > a,
+  .main-navigation .current_page_item > a:hover,
+  .main-navigation .current_page_item li:hover,
+  .main-navigation .current_page_parent .current_page_item > a {
+    background: #e8e86d;
+    color: #3aaf55;
   }
 }
 
@@ -868,7 +911,6 @@ header {
   left: 5px;
   line-height: normal;
   padding: 15px 23px 14px;
-  text-decoration: none;
   top: 5px;
   width: auto;
   z-index: 100000;
@@ -991,9 +1033,12 @@ body.error404 .content-area {
   display: block;
 }
 
-.post,
-.page {
+.post {
   margin: 0 0 1.5em;
+}
+
+.page {
+  margin: 0;
 }
 
 .updated:not(.published) {
@@ -1205,7 +1250,46 @@ MODAL WINDOW
   margin: 0 calc(50% - 50vw);
 }
 
-.site-info a {
-  text-decoration: none;
+/***************************************/
+/** Footer Styles  **/
+/***************************************/
+.site-footer {
+  background: #3aaf55;
+  padding: 20px 10px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.site-footer .menu-main-menu-container > ul > li > a {
+  padding: 0;
+}
+
+.site-footer .site-title {
+  border: 5px white solid;
+  display: inline-block;
+  margin: 0 0 10px;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer-info {
   color: inherit;
+}
+
+.site-footer .menu-main-menu-container > ul {
+  background: none;
+}
+
+.site-map-title {
+  font-size: 1.3em;
+  margin: 20px 0 10px;
+}
+
+/** Footer Media Query **/
+@media screen and (min-width: 700px) {
+  footer {
+    padding: 20px 20px;
+  }
 }
