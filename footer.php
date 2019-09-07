@@ -47,11 +47,5 @@
 <?php get_template_part( 'template-parts/scroll', 'to-top' );
  ?>
 <div id="dimmer"></div>
-<script>
-	sal({
-	threshold: 1,
-	once: false,
-	});
-</script>
 </body>
 </html>

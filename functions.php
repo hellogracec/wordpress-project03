@@ -185,15 +185,6 @@ function wordpress_project_03_scripts() {
 
 
 	// ****************************************
-	// ** Sal Animation ** 
-	// ****************************************
-	wp_enqueue_style('sal-style', get_template_directory_uri() . '/node_modules/sal.js/dist/sal.css');
-
-	wp_enqueue_script('sal-js', get_template_directory_uri() . '/node_modules/sal.js/dist/sal.js');
-
-
-
-	// ****************************************
 	// ** Scroll Reveal Animation ** 
 	// ****************************************
 	wp_enqueue_script('scroll-reveal', "https://unpkg.com/scrollreveal/dist/scrollreveal.min.js");
