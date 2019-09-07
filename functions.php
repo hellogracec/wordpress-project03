@@ -183,6 +183,25 @@ function wordpress_project_03_scripts() {
 		true 
 	);
 
+
+	// ****************************************
+	// ** Sal Animation ** 
+	// ****************************************
+	wp_enqueue_style('sal-style', get_template_directory_uri() . '/node_modules/sal.js/dist/sal.css');
+
+	wp_enqueue_script('sal-js', get_template_directory_uri() . '/node_modules/sal.js/dist/sal.js');
+
+
+
+	// ****************************************
+	// ** Scroll Reveal Animation ** 
+	// ****************************************
+	wp_enqueue_script('scroll-reveal', "https://unpkg.com/scrollreveal/dist/scrollreveal.min.js");
+	wp_enqueue_script('scroll-reveal-script', get_template_directory_uri() .'/js/scroll-reveal.js',	array( 'jquery' ), 
+	'20190907',
+	true );
+
+	
 	// ***************************************
 	// ** REST API EXAMPLE
 	// ***************************************
@@ -243,7 +262,7 @@ add_filter('excerpt_length', 'pjt_excerpt_length', 999);
 // ** this changes excerpt_more value 
 // ***************************************
 function pjt_excerpt_more ( $more ) {
-	$read_more = '...<a class="read-more" href="' . get_permalink() . '">Read More about the Student</a>';
+	$read_more = '...<a class="read-more" href="' . get_permalink() . '">Read More✨</a>';
 	return $read_more;
 }
 add_filter('excerpt_more', 'pjt_excerpt_more');

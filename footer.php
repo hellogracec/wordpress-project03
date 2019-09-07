@@ -14,9 +14,9 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
-		<div class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
 		<div class="footer-content-container">
 			<div class="site-info">
+				<div class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
 				<p><a href="https://goo.gl/maps/zzfsfXZfe3zeba5H9" target="_blank">Location: 555 Seymour St. Vancouver, BC</a></p>
 				<p>Phone: 000.000.0909</p>
 				<p><a href="mailto:info@hellogracecho.com" target="_blank">email: info@hellogracecho.com</a></p>
@@ -47,6 +47,11 @@
 <?php get_template_part( 'template-parts/scroll', 'to-top' );
  ?>
 <div id="dimmer"></div>
-
+<script>
+	sal({
+	threshold: 1,
+	once: false,
+	});
+</script>
 </body>
 </html>

@@ -1,0 +1,25 @@
+{
+  "name": "wordpress_project_03",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)",
+  "main": "index.js",
+  "dependencies": {
+    "sal.js": "^0.6.1",
+    "scrollreveal": "^4.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hellogracec/wordpress-project03.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hellogracec/wordpress-project03/issues"
+  },
+  "homepage": "https://github.com/hellogracec/wordpress-project03#readme"
+}

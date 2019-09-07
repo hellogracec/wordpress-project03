@@ -41,13 +41,6 @@
 		?>
 	</div><!-- .entry-content -->
 	<?php
-
-	// TODO  - (Optional) Links to other students in their taxonomy term using get_the_terms() 
-	// $term_obj_list = get_the_terms( $post->ID, 'pjt-student-category' );
-	// $terms_string = join(', ', wp_list_pluck($term_obj_list, 'name'));
-	// echo $terms_string;
-
-	// ** Add Taxonomy template to template
 	if ( 'pjt-student' === get_post_type() )  {
 		echo get_the_term_list(
 			$post->ID, 
@@ -55,40 +48,42 @@
 			'Specialty: '
 		);
 
-		$the_category = get_the_term_list($post->ID, 'pjt-student-category');
-		// ** Add Taxology Category
-		$args = array(
-			'post_type' 	  => 'pjt-student',
-			'posts_per_page'  => -1,
-			'orderby'         => 'title',
-			'order'           => 'ASC',
-			'tax_query' 	  => array(
-				array(
-					'taxonomy' => 'pjt-student-category', 
-					'field'	   => 'slug',
-					'terms'    => $the_category
-				)
-			)
-		);
+	
+		$terms = get_the_terms( get_the_ID(), 'pjt-student-category');
 
-		$featured_work = new WP_Query( $args );
-		print_r($featured_work);
-		if ( $featured_work->have_posts() ){
-			echo '<h3>Meet Other '. $the_category . ' Students: </h3>'; 
-			// TODO Only other names.. not the current student name
-			while ( $featured_work -> have_posts() ){
-				$featured_work -> the_post();
-				echo "<p>";
-				echo '<a href="'; 
-				the_permalink();
-				echo '">';
-				the_title();			
-				echo '</a>';
-				echo "</p>";
+		// ** Links to other students in their taxonomy term using get_the_terms() 
+		$exclude_ids = array( get_The_ID() );
+
+		echo "<h1>" . $current_post . "</h1>";
+
+		if ( $terms && ! is_wp_error( $terms ) ) {
+			foreach ( $terms as $term ) {
+				$args = array(
+					'post_type' 	  => 'pjt-student',
+					'posts_per_page'  => -1,
+					'orderby'         => 'title',
+					'order'           => 'ASC',
+					'post__not_in'	  => $exclude_ids,
+					'tax_query' 	  => array(
+						array(
+							'taxonomy' => 'pjt-student-category',
+							'field'	   => 'slug',
+							'terms'    => $term->name
+						)
+					)
+				);
+
+				$others = new WP_Query( $args );
+				?>
+				<h3>Meet Other <?php echo $term->name; ?> Students: </h3>
+				<?php 
+				while ( $others -> have_posts() ){
+					$others -> the_post(); ?>
+					<p><a href=" <?php the_permalink(); ?> "><?php the_title(); ?></a></p>
+				<?php }
+				wp_reset_postdata();
 			}
-			wp_reset_postdata();
 		}
-
 		}
 	?>
 

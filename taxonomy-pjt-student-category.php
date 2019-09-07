@@ -7,7 +7,7 @@ get_header();
 ?>
 
 
-<div id="primary" class="content-area">
+<div id="primary" class="site-content">
 	<main id="main" class="site-main">
 			
 		<?php get_template_part('template-parts/student', 'by-category'); ?>
@@ -16,5 +16,4 @@ get_header();
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();

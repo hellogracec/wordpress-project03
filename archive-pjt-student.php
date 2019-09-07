@@ -11,7 +11,7 @@ get_header();
 	<main id="main" class="site-main">
 
 		<header class="page-header">
-            <h1>The Class</h1>
+            <h1 class=highlight-green>The Class</h1>
 		</header><!-- .page-header -->
 
         <?php 
