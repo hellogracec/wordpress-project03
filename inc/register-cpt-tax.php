@@ -91,9 +91,8 @@ function pjt_register_custom_post_types()
 		'menu_icon'          => 'dashicons-buddicons-buddypress-logo',
         'supports'           => array('title', 'thumbnail', 'editor'),
         'template'           => array(
-            array('core/paragraph',array('placeholder' => 'Write a description / bio of the staff member...')),
-            array('core/image')
-        ),
+			array('core/paragraph',array('placeholder' => 'Write a description / bio of the staff member...'))
+		        ),
         'template_lock' => 'all'    
 	);
 

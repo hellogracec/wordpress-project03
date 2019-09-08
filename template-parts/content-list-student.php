@@ -13,6 +13,14 @@ $terms = get_terms(
 );
 
 if( $terms && ! is_wp_error( $terms )) : ?>
+<?php 
+// TODO Search by Category ... 
+foreach ( $terms as $term ) {	
+	echo '<a href="' . get_term_link($term) . '">';
+	echo $term->name;
+	echo '</a>';
+}
+?>
 <section class="widget">
 <?php 
 // ** Archive-ms-work-category 
@@ -34,16 +42,27 @@ if( $terms && ! is_wp_error( $terms )) : ?>
 			<div class="student-one" >
 				<h2>
 					<span class='highlight-yellow'>
-					<a href = "<?php get_permalink() ?>"><?php the_title(); ?></a></span>
+					<a href = "<?php echo get_permalink(); ?>"><?php the_title(); ?></a></span>
 				</h2>
 				<?php the_post_thumbnail('medium'); ?>
 				<?php the_excerpt(); ?>
 				<?php 
-				get_the_term_list( 
-				$post->ID, 
-				'pjt-student-category', 
-				'Specialty: '
-			); ?>
+
+			if ( 'pjt-student' === get_post_type() )  {
+				echo '<div class="specialty">' . get_the_term_list(
+					$post->ID, 
+					'pjt-student-category', 
+					'Specialty: '
+				) . '</div>'; 
+			}
+			// ** Social Media Links ... Reference
+			if (function_exists('get_field')) :
+				if (get_field('social_media_link')) : ?>
+				<p><a class="social-meida-link" href = "<?php the_field('social_media_link'); ?>" target="_blank">Instagram</a></p>
+				<?php endif;
+			endif; 
+	
+			 ?>
 			</div>
 		<?php endwhile; ?>
 		</div>

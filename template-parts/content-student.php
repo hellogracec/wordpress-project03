@@ -8,19 +8,16 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title('<h1 class="entry-title">', '</h1>'); ?>
-
-		<div class="entry-meta">
-			<?php wordpress_project_03_posted_on(); ?>
-		</div><!-- .entry-meta -->
-	</header><!-- .entry-header -->
+	<header class="page-header">
+		<div id="site-header-banner">
+			<img class="alignfull" src="<?php header_image(); ?>" width="<?php echo absint( get_custom_header()->width ); ?>" height="<?php echo absint( get_custom_header()->height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
+			<h1 class="banner-title highlight-green"><?php the_title(); ?></h1>
+		</div> 
+	</header><!-- .page-header -->
 
 	<div class="entry-content">
 		<?php 
 		the_post_thumbnail('student-featured');
-		?>
-		<?php
 		the_content( sprintf(
 			wp_kses(
 				/* translators: %s: Name of current post. Only visible to screen readers */
@@ -38,55 +35,52 @@
 			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'wordpress_project_03' ),
 			'after'  => '</div>',
 		) );
+
+		// ** Social Media Links ... Reference
+		if (function_exists('get_field')) :
+			if (get_field('social_media_link')) : ?>
+			<p><a class="social-meida-link" href = "<?php the_field('social_media_link'); ?>" target="_blank">Instagram</a></p>
+			<?php endif;
+		endif; 
 		?>
 	</div><!-- .entry-content -->
-	<?php
-	if ( 'pjt-student' === get_post_type() )  {
-		echo get_the_term_list(
-			$post->ID, 
-			'pjt-student-category', 
-			'Specialty: '
-		);
+	<div class="related-students">
+	<?php 
+	$terms = get_the_terms( get_the_ID(), 'pjt-student-category');
 
-	
-		$terms = get_the_terms( get_the_ID(), 'pjt-student-category');
+	// ** Links to other students in their taxonomy term using get_the_terms() 
+	$exclude_ids = array( get_The_ID() );
 
-		// ** Links to other students in their taxonomy term using get_the_terms() 
-		$exclude_ids = array( get_The_ID() );
-
-		echo "<h1>" . $current_post . "</h1>";
-
-		if ( $terms && ! is_wp_error( $terms ) ) {
-			foreach ( $terms as $term ) {
-				$args = array(
-					'post_type' 	  => 'pjt-student',
-					'posts_per_page'  => -1,
-					'orderby'         => 'title',
-					'order'           => 'ASC',
-					'post__not_in'	  => $exclude_ids,
-					'tax_query' 	  => array(
-						array(
-							'taxonomy' => 'pjt-student-category',
-							'field'	   => 'slug',
-							'terms'    => $term->name
-						)
+	if ( $terms && ! is_wp_error( $terms ) ) {
+		foreach ( $terms as $term ) {
+			$args = array(
+				'post_type' 	  => 'pjt-student',
+				'posts_per_page'  => -1,
+				'orderby'         => 'title',
+				'order'           => 'ASC',
+				'post__not_in'	  => $exclude_ids,
+				'tax_query' 	  => array(
+					array(
+						'taxonomy' => 'pjt-student-category',
+						'field'	   => 'slug',
+						'terms'    => $term->name
 					)
-				);
+				)
+			);
 
-				$others = new WP_Query( $args );
-				?>
-				<h3>Meet Other <?php echo $term->name; ?> Students: </h3>
-				<?php 
-				while ( $others -> have_posts() ){
-					$others -> the_post(); ?>
-					<p><a href=" <?php the_permalink(); ?> "><?php the_title(); ?></a></p>
-				<?php }
-				wp_reset_postdata();
-			}
+			$others = new WP_Query( $args );
+			?>
+			<h3><span class="highlight-green">Meet Other <?php echo $term->name; ?> Students</span></h3>
+			<?php 
+			while ( $others -> have_posts() ){
+				$others -> the_post(); ?>
+				<p><a href=" <?php the_permalink(); ?> "><?php the_title(); ?></a></p>
+			<?php }
+			wp_reset_postdata();
 		}
-		}
+	}
 	?>
-
+	</div>
 	
 	<footer class="entry-footer">
 		<?php wordpress_project_03_entry_footer(); ?>

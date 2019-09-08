@@ -54,5 +54,6 @@
 		</div><!-- .site-branding -->
 
 	</header><!-- #masthead -->
-
+	<?php if ( get_header_image() ) : ?>
+<?php endif; ?>
 	<div id="content" class="site-content">

@@ -11,7 +11,10 @@ get_header();
 	<main id="main" class="site-main">
 
 		<header class="page-header">
-            <h1 class=highlight-green>The Class</h1>
+        <div id="site-header-banner">
+                <img class="alignfull" src="<?php header_image(); ?>" width="<?php echo absint( get_custom_header()->width ); ?>" height="<?php echo absint( get_custom_header()->height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
+				<h1 class="banner-title highlight-green">The Class</h1>
+            </div>
 		</header><!-- .page-header -->
 
         <?php 
