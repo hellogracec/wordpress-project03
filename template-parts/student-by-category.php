@@ -6,7 +6,7 @@
         <h1 class="banner-title highlight-green"><?php single_term_title(); echo " Students"; ?></h1>
     </div> 
 </header><!-- .page-header -->
-
+ 
 
 <div class='student-grid-container'>
     <?php
