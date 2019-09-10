@@ -39,6 +39,35 @@ sr.reveal(".recent-posts", {
   viewFactor: 0.2
 });
 
+sr.reveal("#site-header-banner", {
+  duration: 2000,
+  origin: "bottom"
+});
+
+sr.reveal(".choose-specialty", {
+  duration: 2000,
+  delay: 500,
+  origin: "top"
+});
+
+sr.reveal(".student-grid-container", {
+  duration: 2000,
+  delay: 700,
+  origin: "bottom"
+});
+
+sr.reveal(".single-student", {
+  duration: 2000,
+  delay: 700,
+  origin: "bottom"
+});
+
+sr.reveal(".staff-category", {
+  duration: 2000,
+  delay: 700,
+  origin: "bottom"
+});
+
 // sr.reveal("#testimonial div", {
 //   duration: 2000,
 //   origin: "bottom"
