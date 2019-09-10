@@ -1625,6 +1625,67 @@ h1 {
 }
 
 //***************************************/
+//** Schedule Page Styles  **/
+//***************************************/
+.schedule-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: none;
+
+  thead {
+    background: #3aaf55;
+    color: #fff;
+    th {
+      text-align: left;
+      font-size: 1.5em;
+    }
+  }
+  .one-day:nth-child(2n + 1) {
+    background: #dceedb;
+  }
+  th,
+  td {
+    padding: 8px 10px;
+  }
+
+  //** Hide table header for mobile (but not display: none;, for accessibility)
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  @media screen and (min-width: 500px) {
+    table {
+      display: table;
+    }
+    thead {
+      display: table-header-group;
+    }
+    tbody {
+      display: table-row-group;
+    }
+    th,
+    td {
+      display: table-cell;
+    }
+    tr {
+      display: table-row;
+    }
+    thead tr {
+      position: unset;
+    }
+  }
+}
+
+//***************************************/
 //** Custom Styles  **/
 //***************************************/
 .alignfull {

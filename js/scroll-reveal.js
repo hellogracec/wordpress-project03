@@ -17,7 +17,7 @@ sr.reveal(".who", {
 });
 sr.reveal(".what", {
   duration: 2000,
-  delay: 500,
+  delay: 1200,
   origin: "right",
   distance: "300px",
   viewFactor: 0.2
@@ -63,6 +63,12 @@ sr.reveal(".single-student", {
 });
 
 sr.reveal(".staff-category", {
+  duration: 2000,
+  delay: 500,
+  origin: "bottom"
+});
+
+sr.reveal(".schedule-table", {
   duration: 2000,
   delay: 700,
   origin: "bottom"

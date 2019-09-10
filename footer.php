@@ -46,7 +46,7 @@
 			<?php
 			/* translators: 1: Theme name, 2: Theme author. */
 			// printf( esc_html__( '%1$s | %2$s.', 'wordpress_project_03' ), 'BCIT Education Purpose Only', '<a href="https://hellogracecho.com">&copy; 2019 Grace Cho</a>' );
-			echo '<a href="https://hellogracecho.com">&copy; 2019 Grace Cho</a>';
+			echo '&copy; 2019 Grace Cho';
 
 			?>
 		</div><!-- .site-info -->
