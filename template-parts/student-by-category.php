@@ -4,7 +4,7 @@
     <div id="site-header-banner">
         <img class="alignfull" src="<?php header_image(); ?>" width="<?php echo absint( get_custom_header()->width ); ?>" height="<?php echo absint( get_custom_header()->height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
         <h1 class="banner-title highlight-green"><?php single_term_title(); echo " Students"; ?></h1>
-    </div>
+    </div> 
 </header><!-- .page-header -->
 
 
@@ -24,7 +24,7 @@
             <?php endif;
             // ** Social Media Links ... Reference
             if (get_field('social_media_link')) : ?>
-            <a class="social-meida-link" href = "<?php the_field('social_media_link');?>" target="_blank">Instagram</a>
+            <a class="social-meida-link" href = "<?php the_field('social_media_link');?>" target="_blank">⚡️ Instagram</a>
             <?php endif;
         endif; ?>
     </div>

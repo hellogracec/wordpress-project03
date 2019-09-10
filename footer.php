@@ -17,17 +17,27 @@
 		<div class="footer-content-container">
 			<div class="site-info">
 				<div class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
-				<p><a href="https://goo.gl/maps/zzfsfXZfe3zeba5H9" target="_blank">Location: 555 Seymour St. Vancouver, BC</a></p>
-				<p>Phone: 000.000.0909</p>
-				<p><a href="mailto:info@hellogracecho.com" target="_blank">email: info@hellogracecho.com</a></p>
-				<p>Hours: Monday - Friday, 9:00AM - 5:00PM</p>
+				<?php
+				wp_nav_menu( array(
+					'theme_location' => 'footer-contact',
+					'menu_id'        => 'footer-contact-menu',
+				) );
+				?>
+				<div class="social-media">
+				<?php
+				wp_nav_menu( array(
+					'theme_location' => 'social-media',
+					'menu_id'        => 'social-media',
+				) );
+				?>
+				</div>
 			</div>
 			<div class="site-map">
 				<div class="site-map-title">Site Map</div>
 				<?php
 				wp_nav_menu( array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
+					'theme_location' => 'footer-sitemap',
+					'menu_id'        => 'footer-sitemap-menu',
 				) );
 				?>
 			</div>

@@ -72,7 +72,7 @@ body {
    * `article` contexts in Chrome, Firefox, and Safari.
    */
 h1 {
-  font-size: 2em;
+  font-size: 1.8em;
   margin: 0.67em 0;
 }
 
@@ -978,8 +978,6 @@ body.error404 .content-area {
   --------------------------------------------------------------*/
 .clear:before,
 .clear:after,
-.entry-content:before,
-.entry-content:after,
 .comment-content:before,
 .comment-content:after,
 .site-header:before,
@@ -1241,12 +1239,8 @@ object {
   fill: #2e8642;
 }
 
-/***************************************/
-/** Footer Styles  **/
-/***************************************/
 .site-footer {
   background: #3aaf55;
-  margin-top: 30px;
   padding: 20px 10px;
   color: #fff;
   text-transform: uppercase;
@@ -1266,11 +1260,7 @@ object {
   color: #fff;
 }
 
-.site-footer p {
-  margin: 0;
-}
-
-.site-footer .site-info p,
+.site-footer .menu-footer-contact-menu-container li,
 .site-footer .site-map li {
   margin: 0 0 5px;
 }
@@ -1290,21 +1280,34 @@ object {
 
 .site-footer .site-basic-info {
   color: inherit;
-  margin: 20px 0 0;
+  margin: 10px 0 0;
   text-align: center;
 }
 
-/** Footer Media Query **/
+.site-footer .social-media ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.site-footer .social-media svg {
+  width: 1.5em;
+  fill: #fff;
+  margin-right: 0.8em;
+}
+
 @media screen and (min-width: 460px) {
   .site-footer {
     padding: 20px 20px;
     margin: 0 auto;
     max-width: 1000px;
     position: relative;
+    /** Full Bleed Width Background CSS trick **/
   }
-  /** Full Bleed Width Background CSS trick **/
-  .site-footer::before,
-  .site-footer::after {
+  .site-footer .site-map-title {
+    margin: 5px 0 10px;
+  }
+  .site-footer::before, .site-footer::after {
     content: "";
     position: absolute;
     /* fill vertically */
@@ -1325,9 +1328,6 @@ object {
         grid-template-columns: repeat(2, 1fr);
     justify-items: center;
   }
-  .site-map-title {
-    margin: 10px 0;
-  }
 }
 
 /***************************************/
@@ -1337,20 +1337,15 @@ object {
   margin: 1em 0 3em;
 }
 
-@media screen and (min-width: 700px) {
-  .site-main {
-    margin: 1em 0 4em;
-  }
-}
-
 h1,
 h2 {
   margin: 0 0 10px;
 }
 
-/***************************************/
-/** Home Styles  **/
-/***************************************/
+h1 {
+  text-transform: uppercase;
+}
+
 .home .site-main {
   display: -ms-grid;
   display: grid;
@@ -1481,7 +1476,7 @@ h2 {
   z-index: -1;
 }
 
-/** Hom Media Query **/
+/** Home Media Query **/
 @media screen and (min-width: 700px) {
   .home .site-main {
     -ms-grid-rows: auto;
@@ -1527,7 +1522,7 @@ h2 {
 .student-grid-container {
   display: -ms-grid;
   display: grid;
-  grid-gap: 30px 20px;
+  grid-gap: 30px 40px;
   -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   -webkit-box-pack: justify;
@@ -1537,18 +1532,153 @@ h2 {
 
 .student-grid-container .student-one img {
   display: block;
-  margin: 0 auto;
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  max-height: 400px;
 }
 
-.student-grid-container .student-one p:nth-of-type(1) {
+.student-grid-container .student-one p {
   margin: 10px 0;
 }
 
-/***************************************/
-/** Custom Styles  **/
-/***************************************/
+.student-grid-container .student-one .specialty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.student-grid-container .student-one .specialty a {
+  color: #8be185;
+  text-decoration: none;
+}
+
+.student-grid-container .student-one .specialty a:hover, .student-grid-container .student-one .specialty a:focus, .student-grid-container .student-one .specialty a:active {
+  color: #3aaf55;
+}
+
+.student-grid-container .student-one .specialty p {
+  margin: 0;
+}
+
+.single-student {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 20px;
+}
+
+.single-student .single-student-image img {
+  display: block;
+  margin: 0 auto;
+}
+
+.single-student .single-student-content {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 5px;
+}
+
+.single-student .single-student-content h2 {
+  margin: 0;
+}
+
+.single-student .related-students p {
+  margin-left: 1.5em;
+}
+
+.single-student .related-students a {
+  color: #8be185;
+  text-decoration: none;
+}
+
+.single-student .related-students a:hover, .single-student .related-students a:focus, .single-student .related-students a:active {
+  color: #3aaf55;
+}
+
+@media screen and (min-width: 480px) {
+  .single-student {
+        grid-template-areas: "photo bio" "link link";
+  }
+  .single-student .single-student-image {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    grid-area: photo;
+    min-width: -webkit-max-content;
+    min-width: -moz-max-content;
+    min-width: max-content;
+  }
+  .single-student .single-student-content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    grid-area: bio;
+  }
+  .single-student .related-students {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: link;
+  }
+}
+
+@media screen and (min-width: 730px) {
+  .single-student {
+        grid-template-areas: "photo bio" "photo link";
+  }
+}
+
+.staff-category {
+  margin-bottom: 30px;
+}
+
+.staff-container {
+  margin-bottom: 20px;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 10px;
+}
+
+.staff-container img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  max-height: 300px;
+}
+
+@media screen and (min-width: 420px) {
+  .staff-container img {
+    max-height: 400px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .staff-container {
+    -ms-grid-columns: 3fr 5fr;
+        grid-template-columns: 3fr 5fr;
+    grid-gap: 20px;
+  }
+  .staff-container img {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+
+.faculty-more p {
+  margin: 10px 0;
+}
+
+.faculty-more a {
+  color: #8be185;
+  text-decoration: none;
+}
+
+.faculty-more a:hover, .faculty-more a:focus, .faculty-more a:active {
+  color: #3aaf55;
+}
+
 .alignfull {
   width: 100vw;
   max-width: 100vw;
@@ -1598,6 +1728,7 @@ h2 {
 .read-more,
 .social-meida-link {
   color: #8be185;
+  text-decoration: none;
 }
 
 .read-more:hover, .read-more:focus, .read-more:active,
@@ -1607,15 +1738,21 @@ h2 {
   color: #3aaf55;
 }
 
-.specialty a {
-  text-decoration: underline;
+.choose-specialty {
+  margin-bottom: 1em;
 }
 
-#site-header-banner {
+.choose-specialty h1 {
+  margin-right: 0.8em;
+}
+
+#site-header-banner,
+.front-slider {
   position: relative;
 }
 
-#site-header-banner .banner-title {
+#site-header-banner .banner-title,
+.front-slider .banner-title {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1629,12 +1766,13 @@ h2 {
 }
 
 @media screen and (min-width: 700px) {
-  #site-header-banner .banner-title {
+  #site-header-banner .banner-title,
+  .front-slider .banner-title {
     font-size: 4em;
   }
 }
 
 .page-header {
-  margin-bottom: 3em;
+  margin-bottom: 2em;
 }
 /*# sourceMappingURL=style.css.map */

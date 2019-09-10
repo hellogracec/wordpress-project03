@@ -14,15 +14,14 @@
             array(
                 'taxonomy' => $taxonomy
             )
-        );
+        ); ?>
 
-        if( $terms && ! is_wp_error( $terms )) {
-            echo '<section class="widget">';
-            foreach($terms as $term) {
-                echo "<h1>";
-                echo $term->name;
-                echo "</h1>";
-
+        <section class="widget staff">
+        <?php if( $terms && ! is_wp_error( $terms )) {
+            foreach($terms as $term) { ?>
+                <div class="staff-category">
+                <h1><span class="highlight-green"><?php echo $term->name; ?></span></h1>
+                <?php 
                 // ** Archive-ms-partner-links 
                 // ** $term->slug is updating by looping
                 $args = array(
@@ -41,35 +40,30 @@
 
                 if ( $partnerType -> have_posts() ) {
                     while ( $partnerType -> have_posts() ){
-                        $partnerType -> the_post();
-                        echo '<h2>';
-                        the_title();
-                        echo '</h2>';
-                        the_post_thumbnail('thumbnail');
-                        // ** To retrieve only text from the_content
-                        echo '<p>';
-                        echo wp_strip_all_tags( get_the_content() );
-                        echo '</p>';
+                        $partnerType -> the_post();?>
+                        <h2><span class="highlight-yellow"><?php the_title(); ?></span></h2>
+                        <div class="staff-container">
+                            <?php the_post_thumbnail('large'); ?>
+                            <div class="staff-content">
+                                <p><?php echo wp_strip_all_tags( get_the_content() ); ?></p>
 
-                        // ** Show ACF 
-                        if($term->name === 'Faculty' && function_exists('get_field')){
-                            if (get_field('courses')) {
-                                echo "<p>Courses: ";
-                                the_field('courses');
-                                echo "</p>";
-                            }
-                            if (get_field('url_links')) {
-                                echo '<a href = "';
-                                the_field('url_links');
-                                echo '" target="_blank">';
-                                echo "Instructor Website";
-                                echo '</a>';
-                            }
-                        }
-                    }
+                                <?php if($term->name === 'Faculty' && function_exists('get_field')){ ?>
+                                <?php if (get_field('courses')) { ?>
+                               <div class="faculty-more">
+                                <p>Courses: <?php the_field('courses'); ?></p>
+                                <?php }
+                                if (get_field('url_links')) { ?>
+                                <p><a href = "<?php the_field('url_links'); ?>" target="_blank">🐾 Instructor Website</a></p>
+                                </div>
+                                <?php }
+                                } ?>
+                            </div>
+                        </div>
+                    <?php }
                     wp_reset_postdata();
-                }
-            }
-            echo '</section>';
+                } ?>
+                </div>
+            <?php }
         }
-?>
+        ?>
+    </section>

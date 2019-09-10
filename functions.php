@@ -49,6 +49,9 @@ if ( ! function_exists( 'wordpress_project_03_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'wordpress_project_03' ),
+			'footer-contact' => esc_html__('Footer Contact Menu', 'wordpress_project_03'),
+			'footer-sitemap' => esc_html__('Footer Sitemap Menu', 'wordpress_project_03'),
+			'social-media' => esc_html__('Social Media Menu', 'wordpress_project_03'),
 		) );
 
 		/*

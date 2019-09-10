@@ -13,14 +13,11 @@ $terms = get_terms(
 );
 
 if( $terms && ! is_wp_error( $terms )) : ?>
-<?php 
-// TODO Search by Category ... 
-foreach ( $terms as $term ) {	
-	echo '<a href="' . get_term_link($term) . '">';
-	echo $term->name;
-	echo '</a>';
-}
-?>
+<div class="choose-specialty">
+	<?php foreach ( $terms as $term ) { ?>
+	<h1 class='highlight-green'><a href="<?php echo get_term_link($term); ?>"><?php echo $term->name; ?></a></h1>
+	<?php } ?>
+</div>
 <section class="widget">
 <?php 
 // ** Archive-ms-work-category 
@@ -44,25 +41,25 @@ foreach ( $terms as $term ) {
 					<span class='highlight-yellow'>
 					<a href = "<?php echo get_permalink(); ?>"><?php the_title(); ?></a></span>
 				</h2>
-				<?php the_post_thumbnail('medium'); ?>
+				<a href = "<?php echo get_permalink(); ?>"><?php the_post_thumbnail('medium'); ?></a>
 				<?php the_excerpt(); ?>
-				<?php 
-
-			if ( 'pjt-student' === get_post_type() )  {
-				echo '<div class="specialty">' . get_the_term_list(
-					$post->ID, 
-					'pjt-student-category', 
-					'Specialty: '
-				) . '</div>'; 
-			}
-			// ** Social Media Links ... Reference
-			if (function_exists('get_field')) :
-				if (get_field('social_media_link')) : ?>
-				<p><a class="social-meida-link" href = "<?php the_field('social_media_link'); ?>" target="_blank">Instagram</a></p>
-				<?php endif;
-			endif; 
-	
-			 ?>
+				<div class="specialty">
+					<?php 
+					if ( 'pjt-student' === get_post_type() )  {
+						echo "<p>" . get_the_term_list(
+							$post->ID, 
+							'pjt-student-category', 
+							'Specialty: '
+						) . "</p>"; 
+					}
+					// ** Social Media Links ... Reference
+					if (function_exists('get_field')) :
+						if (get_field('social_media_link')) : ?>
+						<p><a class="social-meida-link" href = "<?php the_field('social_media_link'); ?>" target="_blank">️⚡️ Instagram</a></p>
+						<?php endif;
+					endif; 
+					?>
+				</div>
 			</div>
 		<?php endwhile; ?>
 		</div>

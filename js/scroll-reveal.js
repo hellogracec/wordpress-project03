@@ -10,14 +10,14 @@ sr.reveal(".intro", {
 });
 sr.reveal(".who", {
   duration: 2000,
-  delay: 1000,
+  delay: 500,
   origin: "left",
   distance: "300px",
   viewFactor: 0.2
 });
 sr.reveal(".what", {
   duration: 2000,
-  delay: 1000,
+  delay: 500,
   origin: "right",
   distance: "300px",
   viewFactor: 0.2

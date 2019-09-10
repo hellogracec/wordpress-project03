@@ -10,18 +10,19 @@ get_header();
 ?>
 <div id="primary" class="home content-area">
 	<div class="front-slider">
-	<?php 
-	// ** Gallery Image Slider
-	$images = get_field('image_slider');
-	$size = 'full'; // (thumbnail, medium, large, full or custom size)`
+		<?php 
+		// ** Gallery Image Slider
+		$images = get_field('image_slider');
+		$size = 'full'; // (thumbnail, medium, large, full or custom size)`
 
-	if( $images ): ?>
-	<div class="slider slick-slider alignfull">
-		<?php foreach( $images as $image ): ?>
-		<?php echo wp_get_attachment_image( $image['ID'], $size ); ?>
-		<?php endforeach; ?>
-	</div>
-	<?php endif; ?>
+		if( $images ): ?>
+		<div class="slider slick-slider alignfull">
+			<?php foreach( $images as $image ): ?>
+			<?php echo wp_get_attachment_image( $image['ID'], $size ); ?>
+			<?php endforeach; ?>
+		</div>
+		<?php endif; ?>
+		<h1 class="banner-title highlight-green">Empowering dogs</h1>
 	</div>
 	<!-- End of Slider -->
 	<main id="main" class="site-main">
@@ -32,8 +33,9 @@ get_header();
 
 			if ($intro_query->have_posts()) :
 				while ($intro_query->have_posts()) :
-					$intro_query->the_post();
-					the_content();
+					$intro_query->the_post(); ?>
+					<h1><span class="highlight-green"><?php the_title(); ?></span></h1>
+					<?php the_content();
 				endwhile;
 				wp_reset_postdata();
 			endif;
