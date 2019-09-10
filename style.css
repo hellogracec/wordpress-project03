@@ -1261,6 +1261,10 @@ object {
   color: #fff;
 }
 
+.site-footer a:hover, .site-footer a:focus, .site-footer a:active {
+  color: #e8e86d;
+}
+
 .site-footer .menu-footer-contact-menu-container li,
 .site-footer .site-map li {
   margin: 0 0 5px;
@@ -1295,6 +1299,10 @@ object {
   width: 1.5em;
   fill: #fff;
   margin-right: 0.8em;
+}
+
+.site-footer .social-media svg:hover, .site-footer .social-media svg:focus, .site-footer .social-media svg:active {
+  fill: #e8e86d;
 }
 
 @media screen and (min-width: 460px) {

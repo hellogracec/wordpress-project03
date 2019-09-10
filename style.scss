@@ -1252,6 +1252,11 @@ object {
   }
   a {
     color: #fff;
+    &:hover,
+    &:focus,
+    &:active {
+      color: #e8e86d;
+    }
   }
 
   .menu-footer-contact-menu-container li,
@@ -1284,6 +1289,11 @@ object {
       width: 1.5em;
       fill: #fff;
       margin-right: 0.8em;
+      &:hover,
+      &:focus,
+      &:active {
+        fill: #e8e86d;
+      }
     }
   }
 }
